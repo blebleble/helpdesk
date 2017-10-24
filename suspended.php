@@ -152,21 +152,21 @@
    require_once "database/dbinfo.php";
    require_once "database/connect.php";
   
-	
+    
     $connection = db_connection();
            $sql = "Select * FROM $db_task_tab WHERE $db_task_done = '0' AND $db_task_hang='1'";
            $result = $connection->query($sql);
-			while ($row=$result->fetch_assoc()){	
-					echo "<tr  onMouseover=this.bgColor='#D9E4E6' onMouseout=this.bgColor='white' onclick='showAll($row[$db_task_id])'>";
-					echo "<td> $row[$db_task_sdate]</td>";
-					echo "<td> $row[$db_task_edate]</td>";
-					echo "<td> $row[$db_task_name]</td>";
-					echo "<td> $row[$db_task_description]</td>";
-					echo "<td>";
-					if ($row[$db_task_userid]== $_SESSION['id']){
-					echo "<button type='submit' onclick='event.stopPropagation();hangST($row[$db_subtask_taskid])'>Reaktywuj</button></td>";}
+            while ($row=$result->fetch_assoc()){    
+                    echo "<tr  onMouseover=this.bgColor='#D9E4E6' onMouseout=this.bgColor='white' onclick='showAll($row[$db_task_id])'>";
+                    echo "<td> $row[$db_task_sdate]</td>";
+                    echo "<td> $row[$db_task_edate]</td>";
+                    echo "<td> $row[$db_task_name]</td>";
+                    echo "<td> $row[$db_task_description]</td>";
+                    echo "<td>";
+                    if ($row[$db_task_userid]== $_SESSION['id']){
+                    echo "<button type='submit' onclick='event.stopPropagation();hangST($row[$db_subtask_taskid])'>Reaktywuj</button></td>";}
 
-			}
+            }
    
    ?>   
         </tr> 
