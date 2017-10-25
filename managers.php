@@ -51,11 +51,7 @@
                     require_once "database/connect.php";
     
                     $connection = db_connection(); 
-                        $sql = "Select $db_task_name FROM $db_task_tab WHERE $db_task_done = '0' AND $db_task_hang='1'";  
-                        $result = $connection->query($sql);
-                        while ($row=$result->fetch_assoc()){
-                        echo $row[$db_task_name];
-                        }
+                
                     
                     $sql='SELECT COUNT(id) FROM cats';
                     $result= $connection->query($sql);
@@ -151,17 +147,27 @@
   
     
     $connection = db_connection();
-           $sql = "Select * FROM $db_task_tab WHERE $db_task_done='1' AND $db_task_hang='0'";
+           $sql = "Select * FROM $db_task_tab WHERE $db_task_done='0' AND $db_task_hang='0' AND not $db_task_userid= $_SESSION['online'] ";
+            echo $sql;
+           
            $result = $connection->query($sql);
-            while ($row=$result->fetch_assoc()){    
-                $sql_sb="SELECT * FROM $db_subtask_tab WHERE $db_subtask_taskid= $row[$db_task_id]";
-                $result_sb=$connection->query($sql_sb);
-                while ($row_sb=$result_sb->fetch_assoc()){
-                    
-                }
+            while ($row=$result->fetch_assoc()){  
+
+                $sql_user = "Select $db_users_fname, $db_users_lname FROM $db_users_tab WHERE $db_users_id=$row[$db_task_userid]";
+                $result_user = $connection->query($sql_user);
+                $row_user = $result_user->fetch_assoc();
+                echo "<tr  onMouseover=this.bgColor='#D9E4E6' onMouseout=this.bgColor='white' onclick='showAll($row[$db_task_id])'>";
+                    echo "<td> $row_user[$db_users_fname] $row_user[$db_users_lname]</td>"; 
+                    echo "<td> $row[$db_task_name]</td>";
+                    echo "<td> $row[$db_task_sdate]</td>";
+                    echo "<td> $row[$db_task_edate]</td>";
             }
+
    
    ?>  
+       </tr> 
+    </tbody> 
+  </table>                
     </div>
              <!-- /. PAGE INNER  -->
             </div>
