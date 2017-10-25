@@ -1,7 +1,8 @@
-<? php
-
-echo $_POST["data"];
+<?php
 
 
+$array[0]='ddd' ;
+
+echo json_encode($array);
 
 ?>

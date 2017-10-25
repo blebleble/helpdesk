@@ -5,12 +5,36 @@ jQuery(document).ready(function(){
 function getID(){
 	$( "#select_task" ).change(function() {
 	var d = document.getElementById("select_task").value;	
-	$.post( "get_subtasks.php", {data: d} )
-	.done(function( dd ) {
-    alert( "Data Loaded: " + dd );
+
+	$.ajax({
+        type: 'POST',
+		dataType:'json', 
+        url: "get_subtasks.php",
+        contentType:"application/json; charset=utf-8", 
+        data: {
+			data: d
+        },
+        success: function (jsonArray) {
+            var names = JSON.parse(jsonArray);
+			 var j=1;
+			 while (names[j]) {
+				 alert(names[j]);
+			
+			 j++;
+			 }
+		}
+})
+	
+	
+	
+	
+	
 	
 	
 	
 		
     });    
-})}
+}
+
+
+
