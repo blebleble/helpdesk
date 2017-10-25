@@ -184,7 +184,7 @@ require_once "database/connect.php";
     
     $connection->close();
 ?>
-        <div class="stemat"><p class="tematt">Temat podzadania: <br><input type="text" list="subtasks_list" name="topic" class="stematp" style="width:90%" required/></p></div>
+        <div class="stemat"><p class="tematt">Temat podzadania: <br><input type="text" list="subtasks_list" name="topic" autocomplete="off" class="stematp" style="width:90%" required/></p></div>
         <datalist id="subtasks_list">
           <option value="Boston">
 		   <option value="Boston">
