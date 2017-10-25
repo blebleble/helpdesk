@@ -170,7 +170,7 @@ require_once "database/connect.php";
             
          $sql = "SELECT $db_task_id, $db_task_name, $db_task_edate, $db_task_userid FROM $db_task_tab WHERE $db_task_userid = $id ";
     $result = $connection->query($sql);
-        echo '<select name="task" class="task" required>';
+        echo '<select name="task" id="select_task" class="task" required>';
         echo '<option value=""> Wybierz zadanie </option>';
         while($row = $result->fetch_assoc()) {
             echo '<option value="'.$row[$db_task_id].'">'.$row[$db_task_name].'</option>';
@@ -184,7 +184,15 @@ require_once "database/connect.php";
     
     $connection->close();
 ?>
-        <div class="stemat"><p class="tematt">Temat podzadania: <br><input type="text" name="topic" class="stematp" style="width:90%" required/></p></div>
+        <div class="stemat"><p class="tematt">Temat podzadania: <br><input type="text" list="subtasks_list" name="topic" class="stematp" style="width:90%" required/></p></div>
+        <datalist id="subtasks_list">
+            <?php
+            $sql_subtasks_list = "SELECT $";
+     
+
+
+             ?>
+        </datalist>
         <div class="termin"><p class="termint">Termin rozpoczęcia: <input type="date" id="calendar" name="stime" required/></p></div>
         <div class="termin"><p class="termint">Termin wykonania: <input type="date" id="calendar2" name="etime" required/></p></div>
         <div class="stresc"><p class="tresct">Treść podzadania: <br><textarea name="description" id="trescp" rows="6" style="width:90%" required></textarea></p></div>
@@ -212,7 +220,9 @@ require_once "database/connect.php";
 </body>
 </html>
 
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
 <script type="text/javascript" src="js/datefield.js"></script>
 <script type="text/javascript" src="js/datefield2.js"></script>
+<script type="text/javascript" src="js/taskid.js"></script>
 <script type="text/javascript" src="js/notifications.js"></script>
- <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+

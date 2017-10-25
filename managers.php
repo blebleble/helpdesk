@@ -147,8 +147,7 @@
   
     
     $connection = db_connection();
-           $sql = "Select * FROM $db_task_tab WHERE $db_task_done='0' AND $db_task_hang='0' AND not $db_task_userid= $_SESSION['online'] ";
-            echo $sql;
+           $sql = "Select * FROM $db_task_tab WHERE $db_task_done='0' AND $db_task_hang='0' AND not $db_task_userid=".$_SESSION['id'];
            
            $result = $connection->query($sql);
             while ($row=$result->fetch_assoc()){  
@@ -156,7 +155,7 @@
                 $sql_user = "Select $db_users_fname, $db_users_lname FROM $db_users_tab WHERE $db_users_id=$row[$db_task_userid]";
                 $result_user = $connection->query($sql_user);
                 $row_user = $result_user->fetch_assoc();
-                echo "<tr  onMouseover=this.bgColor='#D9E4E6' onMouseout=this.bgColor='white' onclick='showAll($row[$db_task_id])'>";
+                echo "<tr  onMouseover=this.bgColor='#D9E4E6' onMouseout=this.bgColor='white'>";
                     echo "<td> $row_user[$db_users_fname] $row_user[$db_users_lname]</td>"; 
                     echo "<td> $row[$db_task_name]</td>";
                     echo "<td> $row[$db_task_sdate]</td>";
