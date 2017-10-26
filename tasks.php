@@ -155,8 +155,8 @@
 			$result2 = $connection->query($sql);
             $row2=$result2->fetch_assoc();
             echo "<br>";
-            echo  '<article class="timeline-entry">
-                  <div class="timeline-entry-inner">';
+            echo  "<article id='$row2[$db_subtask_id]' class='timeline-entry'>
+                  <div class='timeline-entry-inner'>";
             if ($row2[$db_task_priority]==1){
                 echo '<div class="timeline-icon bg-priority">';}
             elseif ($row2[$db_subtask_conf]==0 && $row2[$db_subtask_block]==0){
