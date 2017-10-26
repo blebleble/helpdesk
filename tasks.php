@@ -127,26 +127,34 @@
                  <br>
                   <div style='float:left; width: 50%'>   
                       <center><font size=4px><i> Zadania krótsze niż tydzień </i></font></center>
-                 <div class="container">
-	<div class="row">
-         
-        <div class="timeline-centeredleft">
+                
 
-       
-                    
-    <?php  
-    require_once "database/dbinfo.php";
-require_once "database/connect.php";
-    
-    $connection = db_connection();
+	    <div class="container">
+		
+	   <?php  
+		
+		$sql_task= "SELECT $db_task_id, $db_task_name FROM $db_task_tab WHERE $db_task_done='0' AND $db_task_hang='0' ORDER BY $db_task_priority DESC";
+		$result_task = $connection->query($sql_task);
+        while($row_task = $result_task->fetch_assoc()){   
+
     if ($connection != false){
-        $sql = "SELECT $db_subtask_tab.$db_subtask_id, $db_subtask_tab.$db_subtask_taskid, $db_subtask_tab.$db_subtask_name, $db_subtask_tab.$db_subtask_sdate, $db_subtask_tab.$db_subtask_edate, $db_subtask_tab.$db_subtask_description FROM $db_subtask_tab INNER JOIN $db_task_tab ON $db_subtask_tab.$db_subtask_taskid = $db_task_tab.$db_task_id WHERE  DATEDIFF( $db_subtask_tab.$db_subtask_edate, '".date("Y-m-d")."' )< 7   AND $db_subtask_tab.$db_subtask_done='0' AND $db_subtask_tab.$db_subtask_userid =". $_SESSION['id']." ORDER BY $db_task_tab.$db_task_priority DESC, $db_subtask_tab.$db_subtask_edate ASC";
-        $result = $connection->query($sql);
-        while($row = $result->fetch_assoc()){   
+        $sql = "SELECT $db_subtask_tab.$db_subtask_id, $db_subtask_tab.$db_subtask_taskid, $db_subtask_tab.$db_subtask_name, $db_subtask_tab.$db_subtask_sdate, $db_subtask_tab.$db_subtask_edate, $db_subtask_tab.$db_subtask_description FROM $db_subtask_tab INNER JOIN $db_task_tab ON $db_subtask_tab.$db_subtask_taskid = $db_task_tab.$db_task_id WHERE  DATEDIFF( $db_subtask_tab.$db_subtask_edate, '".date("Y-m-d")."' )< 7   AND $db_subtask_tab.$db_subtask_done='0' AND $db_subtask_tab.$db_subtask_taskid='$row_task[$db_task_id]' AND $db_subtask_tab.$db_subtask_userid =". $_SESSION['id']." ORDER BY $db_task_tab.$db_task_priority DESC, $db_subtask_tab.$db_subtask_edate ASC";
+		$result = $connection->query($sql);
+		
+		if (mysqli_num_rows($result)>0){
+			
+			echo "<div class='clickme' style='cursor:pointer' id='$row_task[$db_task_id]'> $row_task[$db_task_name]</div>";
+
+			echo "<div class='row' id='show$row_task[$db_task_id]' style='display:none'>";
+         
+			echo '<div class="timeline-centeredleft">';
+		
+        while($row = $result->fetch_assoc()){  
+		
             $sql = "SELECT $db_task_tab.$db_task_priority, $db_subtask_tab.$db_subtask_conf, $db_subtask_tab.$db_subtask_block, $db_subtask_tab.$db_subtask_id, $db_task_tab.$db_task_id, $db_task_tab.$db_task_name, $db_task_tab.$db_task_description, $db_task_tab.$db_task_sdate, $db_task_tab.$db_task_edate, $db_users_tab.$db_users_fname, $db_users_tab.$db_users_lname FROM $db_subtask_tab INNER JOIN $db_task_tab ON $db_subtask_tab.$db_subtask_taskid=$db_task_tab.$db_task_id INNER JOIN $db_users_tab ON $db_task_tab.$db_task_userid = $db_users_tab.$db_users_id WHERE $db_task_tab.$db_task_id =".$row[$db_subtask_taskid]." AND $db_subtask_tab.$db_subtask_id=$row[$db_subtask_id]";
-            $result2 = $connection->query($sql);
+			$result2 = $connection->query($sql);
             $row2=$result2->fetch_assoc();
-            echo "<br/>";
+            echo "<br>";
             echo  '<article class="timeline-entry">
                   <div class="timeline-entry-inner">';
             if ($row2[$db_task_priority]==1){
@@ -169,7 +177,7 @@ require_once "database/connect.php";
 
             echo "<a><span>Data rozpoczęcia: $row[$db_subtask_sdate]  <br> ";
             echo "Data zakończenia: $row[$db_subtask_edate]<br><br>";
-            echo "Opis zadania: <br> $row[$db_subtask_description]";
+            echo "Opis zadania: <br> $row[$db_subtask_description] </a></span>";
             echo "<form action='unactive_subtask.php' method='post'>";
             echo "<input type='hidden' name='active' value=1>";
             echo "<input type='hidden' name='tid' value=$row[$db_subtask_taskid]>";
@@ -179,33 +187,40 @@ require_once "database/connect.php";
             echo'</div>
                  </div>
                  </article>';
-            }
+		}
+		echo "</div></div>";
+		}
         }
-    $connection -> close();
+		}
     ?>
-
     </div>
     </div>
-    </div>
-    </div>
-                     
                      <div style='float:left; width: 50%'> 
                       <div style='color: black; text-decoration: none;'> <center style='color: black; text-decoration: none'><font size=4px><i> Zadania dłuższe niż tydzień </i></font></center></div>
                       <div class="container">
-	<div class="row">
-    
-        <div class="timeline-centered">
 
 
                     
     <?php  
-    require_once "database/dbinfo.php";
-require_once "database/connect.php";
-    
-    $connection = db_connection();
+
+	$sql_task2= "SELECT $db_task_id, $db_task_name FROM $db_task_tab WHERE $db_task_done='0' AND $db_task_hang='0' ORDER BY $db_task_priority DESC";
+		$result_task2 = $connection->query($sql_task2);
+        while($row_task2 = $result_task2->fetch_assoc()){   
+		
+	
+	
     if ($connection != false){
-        $sql = "SELECT $db_subtask_tab.$db_subtask_id, $db_subtask_tab.$db_subtask_taskid, $db_subtask_tab.$db_subtask_name, $db_subtask_tab.$db_subtask_sdate, $db_subtask_tab.$db_subtask_edate, $db_subtask_tab.$db_subtask_description FROM $db_subtask_tab INNER JOIN $db_task_tab ON $db_subtask_tab.$db_subtask_taskid = $db_task_tab.$db_task_id WHERE DATEDIFF( $db_subtask_tab.$db_subtask_edate, '".date("Y-m-d")."' )>= 7  AND $db_subtask_tab.$db_subtask_done='0' AND $db_subtask_tab.$db_subtask_userid =". $_SESSION['id']." ORDER BY $db_task_tab.$db_task_priority DESC, $db_subtask_tab.$db_subtask_edate ASC";
+        $sql = "SELECT $db_subtask_tab.$db_subtask_id, $db_subtask_tab.$db_subtask_taskid, $db_subtask_tab.$db_subtask_name, $db_subtask_tab.$db_subtask_sdate, $db_subtask_tab.$db_subtask_edate, $db_subtask_tab.$db_subtask_description FROM $db_subtask_tab INNER JOIN $db_task_tab ON $db_subtask_tab.$db_subtask_taskid = $db_task_tab.$db_task_id WHERE DATEDIFF( $db_subtask_tab.$db_subtask_edate, '".date("Y-m-d")."' )>= 7  AND $db_subtask_tab.$db_subtask_done='0' AND $db_subtask_tab.$db_subtask_taskid='$row_task2[$db_task_id]' AND $db_subtask_tab.$db_subtask_userid =". $_SESSION['id']." ORDER BY $db_task_tab.$db_task_priority DESC, $db_subtask_tab.$db_subtask_edate ASC";
         $result = $connection->query($sql);
+		
+		
+		if (mysqli_num_rows($result)>0){
+			echo "<div class='clickme' style='cursor:pointer' id='$row_task[$db_task_id]'> $row_task[$db_task_name]</div>";
+
+			echo "<div class='row' id='show$row_task[$db_task_id]' style='display:none'>";
+         
+			echo '<div class="timeline-centeredleft">';
+		
         while($row = $result->fetch_assoc()){   
             $sql = "SELECT $db_task_tab.$db_task_priority, $db_subtask_tab.$db_subtask_conf, $db_subtask_tab.$db_subtask_block, $db_subtask_tab.$db_subtask_id, $db_task_tab.$db_task_id, $db_task_tab.$db_task_name, $db_task_tab.$db_task_description, $db_task_tab.$db_task_sdate, $db_task_tab.$db_task_edate, $db_users_tab.$db_users_fname, $db_users_tab.$db_users_lname FROM $db_subtask_tab INNER JOIN $db_task_tab ON $db_subtask_tab.$db_subtask_taskid=$db_task_tab.$db_task_id INNER JOIN $db_users_tab ON $db_task_tab.$db_task_userid = $db_users_tab.$db_users_id WHERE $db_task_tab.$db_task_id =".$row[$db_subtask_taskid]." AND $db_subtask_tab.$db_subtask_id=$row[$db_subtask_id]";
             $result2 = $connection->query($sql);
@@ -243,15 +258,17 @@ require_once "database/connect.php";
             echo'</div>
                  </div>
                  </article>';
-            }
         }
+		echo "</div></div>";
+		}
+        }
+		}
     $connection -> close();
     ?>
 
     </div>
     </div>
-    </div>
-    </div>
+	<div style="clear: both;"></div>
              <!-- /. PAGE INNER  -->
             </div>
          <!-- /. PAGE WRAPPER  -->
@@ -260,5 +277,6 @@ require_once "database/connect.php";
    
 </body>
 </html>
-<script type="text/javascript" src="js/notifications.js"></script>
  <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+<script type="text/javascript" src="js/notifications.js"></script>
+<script type="text/javascript" src="js/list.js"></script>
