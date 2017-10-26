@@ -186,6 +186,9 @@ require_once "database/connect.php";
 ?>
         <div class="stemat"><p class="tematt">Temat podzadania: <br><input type="text" list="subtasks_list" name="topic" autocomplete="off" class="stematp" style="width:90%" required/></p></div>
         <datalist id="subtasks_list">
+          <option value="Boston">
+		   <option value="Boston">
+		    <option value="Boston">
         </datalist>
         <div class="termin"><p class="termint">Termin rozpoczęcia: <input type="date" id="calendar" name="stime" required/></p></div>
         <div class="termin"><p class="termint">Termin wykonania: <input type="date" id="calendar2" name="etime" required/></p></div>

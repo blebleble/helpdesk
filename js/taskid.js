@@ -7,6 +7,8 @@ function getID(){
 	var d = document.getElementById("select_task").value;	
 	$.post( "get_subtasks.php", {data: d} )
 	.done(function(jsonArray ) {
+    
+	
 	var names = JSON.parse(jsonArray);
 			 var j=1;
 			 while (names[j]) {
