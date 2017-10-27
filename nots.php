@@ -163,10 +163,11 @@
         
         $result = $connection->query($sql);
 		if (mysqli_num_rows($result)>0){
-		echo $row2[$db_task_name];}
+		echo "<div class='clickme' id='$row2[$db_task_id]' style='cursor:pointer'> $row2[$db_task_name]</div>";}
 		
-		
+		echo "<div id='show$row2[$db_task_id]' style='display:none'>";
         while($row = $result->fetch_assoc()){
+
             switch ($row[$db_notifications_type]){
                 case 1: $text = "Dodano nowy komentarz do aktywnego zadania: ";
                         break;
@@ -232,7 +233,7 @@
                 echo "</p>";
                 }
         }             
-
+        echo '</div>';
     }
 
 
@@ -249,7 +250,9 @@
    
 </body>
 </html>
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js"></script>
 <script type="text/javascript" src="js/changeChecked.js"></script>
 <script type="text/javascript" src="js/change_readnots.js"></script>
 <script type="text/javascript" src="js/notifications.js"></script>
-<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+<script type="text/javascript" src="js/list.js"></script>
