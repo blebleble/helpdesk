@@ -129,16 +129,17 @@
                       <center><font size=4px><i> Zadania krótsze niż tydzień </i></font></center>
                 
 
-	    <div class="container">
+	    <div class="container" >
 		
 	   <?php  
+	   
 		
 		$sql_task= "SELECT $db_task_id, $db_task_name FROM $db_task_tab WHERE $db_task_done='0' AND $db_task_hang='0' ORDER BY $db_task_priority DESC";
 		$result_task = $connection->query($sql_task);
         while($row_task = $result_task->fetch_assoc()){   
 
     if ($connection != false){
-        $sql = "SELECT $db_subtask_tab.$db_subtask_id, $db_subtask_tab.$db_subtask_taskid, $db_subtask_tab.$db_subtask_name, $db_subtask_tab.$db_subtask_sdate, $db_subtask_tab.$db_subtask_edate, $db_subtask_tab.$db_subtask_description FROM $db_subtask_tab INNER JOIN $db_task_tab ON $db_subtask_tab.$db_subtask_taskid = $db_task_tab.$db_task_id WHERE  DATEDIFF( $db_subtask_tab.$db_subtask_edate, '".date("Y-m-d")."' )< 7   AND $db_subtask_tab.$db_subtask_done='0' AND $db_subtask_tab.$db_subtask_taskid='$row_task[$db_task_id]' AND $db_subtask_tab.$db_subtask_userid =". $_SESSION['id']." ORDER BY $db_task_tab.$db_task_priority DESC, $db_subtask_tab.$db_subtask_edate ASC";
+        $sql = "SELECT $db_subtask_tab.$db_subtask_id, $db_subtask_tab.$db_subtask_taskid, $db_subtask_tab.$db_subtask_name, $db_subtask_tab.$db_subtask_sdate, $db_subtask_tab.$db_subtask_edate, $db_subtask_tab.$db_subtask_description FROM $db_subtask_tab INNER JOIN $db_task_tab ON $db_subtask_tab.$db_subtask_taskid = $db_task_tab.$db_task_id WHERE  DATEDIFF( $db_subtask_tab.$db_subtask_edate, '".date("Y-m-d")."' )< 7   AND $db_subtask_tab.$db_subtask_done='0' AND $db_subtask_tab.$db_subtask_taskid='$row_task[$db_task_id]' AND $db_subtask_tab.$db_subtask_userid =". $_SESSION['id']." ORDER BY $db_task_tab.$db_task_priority DESC, $db_subtask_tab.$db_subtask_edate ASC,$db_subtask_row ASC";
 		$result = $connection->query($sql);
 		
 		if (mysqli_num_rows($result)>0){
@@ -278,5 +279,6 @@
 </body>
 </html>
  <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+ <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js"></script>
 <script type="text/javascript" src="js/notifications.js"></script>
 <script type="text/javascript" src="js/list.js"></script>
