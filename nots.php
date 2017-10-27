@@ -160,7 +160,7 @@
         . " FROM $db_notifications_tab INNER JOIN $db_nots_user_tab ON $db_notifications_tab.$db_notifications_id=$db_nots_user_tab.$db_nots_user_notificationid "
         . " WHERE $db_nots_user_tab.$db_nots_user_taskid=$row2[$db_task_id] AND $db_nots_user_tab.$db_nots_user_userid = ".$_SESSION['id']." AND $db_nots_user_delete=0 "
         . " ORDER BY $db_notifications_tab.$db_notifications_date DESC";
-        
+         
         $result = $connection->query($sql);
         while($row = $result->fetch_assoc()){
             switch ($row[$db_notifications_type]){
