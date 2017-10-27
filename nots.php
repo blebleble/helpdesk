@@ -162,10 +162,6 @@
         . " ORDER BY $db_notifications_tab.$db_notifications_date DESC";
          
         $result = $connection->query($sql);
-		if (mysqli_num_rows($result)>0){
-		echo $row2[$db_task_name];}
-		
-		
         while($row = $result->fetch_assoc()){
             switch ($row[$db_notifications_type]){
                 case 1: $text = "Dodano nowy komentarz do aktywnego zadania: ";
