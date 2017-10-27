@@ -142,24 +142,25 @@
                  <br><br><br><br><br>
                  
 <?php 
-
+    
     require_once "database/dbinfo.php";
-require_once "database/connect.php";
+    require_once "database/connect.php";
     
     $connection = db_connection();
 
 
 
-    $test= "SELECT $db_task_name, $db_task_id FROM $db_task_tab WHERE $db_task_id=".$_SESSION["id"];
+    $test= "SELECT $db_task_name, $db_task_id FROM $db_task_tab";
     $result3 = $connection->query($test); 
         while($row2 = $result3->fetch_assoc()){
- 
+        
+    
 
     $sql = "SELECT $db_notifications_tab.$db_notifications_date, $db_notifications_tab.$db_notifications_type, $db_nots_user_tab.$db_nots_user_id, $db_nots_user_tab.$db_nots_user_taskid, $db_nots_user_tab.$db_nots_user_subtaskid, $db_nots_user_tab.$db_nots_user_readnots "
         . " FROM $db_notifications_tab INNER JOIN $db_nots_user_tab ON $db_notifications_tab.$db_notifications_id=$db_nots_user_tab.$db_nots_user_notificationid "
-        . " WHERE $db_nots_user_tab.$db_nots_user_taskid=$row2[$db_task_id] $db_nots_user_tab.$db_nots_user_userid = ".$_SESSION['id']." AND $db_nots_user_delete=0 "
-        . " ORDER BY $db_notifications_tab.$db_notifications_date DESC"; 
-
+        . " WHERE $db_nots_user_tab.$db_nots_user_taskid=$row2[$db_task_id] AND $db_nots_user_tab.$db_nots_user_userid = ".$_SESSION['id']." AND $db_nots_user_delete=0 "
+        . " ORDER BY $db_notifications_tab.$db_notifications_date DESC";
+        
         $result = $connection->query($sql);
         while($row = $result->fetch_assoc()){
             switch ($row[$db_notifications_type]){
@@ -226,7 +227,8 @@ require_once "database/connect.php";
                 echo "<input class='checkboxr' type='checkbox' name='not[]' id='not' value='$row[$db_nots_user_id]'><a href=\"$url\" style='color:black; text-decoration: none'><i>$row[$db_notifications_date]</i>".'    '." $text</a>".'<br><br>'; 
                 echo "</p>";
                 }
-        }                 
+        }             
+
     }
 
 
