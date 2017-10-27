@@ -156,16 +156,16 @@
         
     
 
-    $sql = "SELECT $db_notifications_tab.$db_notifications_date, $db_notifications_tab.$db_notifications_type, $db_nots_user_tab.$db_nots_user_id, $db_nots_user_tab.$db_nots_user_taskid, $db_nots_user_tab.$db_nots_user_subtaskid, $db_nots_user_tab.$db_nots_user_readnots "
+   $sql = "SELECT $db_notifications_tab.$db_notifications_date, $db_notifications_tab.$db_notifications_type, $db_nots_user_tab.$db_nots_user_id, $db_nots_user_tab.$db_nots_user_taskid, $db_nots_user_tab.$db_nots_user_subtaskid, $db_nots_user_tab.$db_nots_user_readnots "
         . " FROM $db_notifications_tab INNER JOIN $db_nots_user_tab ON $db_notifications_tab.$db_notifications_id=$db_nots_user_tab.$db_nots_user_notificationid "
         . " WHERE $db_nots_user_tab.$db_nots_user_taskid=$row2[$db_task_id] AND $db_nots_user_tab.$db_nots_user_userid = ".$_SESSION['id']." AND $db_nots_user_delete=0 "
         . " ORDER BY $db_notifications_tab.$db_notifications_date DESC";
         
         $result = $connection->query($sql);
-		if (mysqli_num_rows($result)>0){
-		echo "<div class='clickme' id='$row2[$db_task_id]' style='cursor:pointer'> $row2[$db_task_name]</div>";}
-		
-		echo "<div id='show$row2[$db_task_id]' style='display:none>";
+        if (mysqli_num_rows($result)>0){
+        echo "<div class='clickme' id='$row2[$db_task_id]' style='cursor:pointer'> $row2[$db_task_name]</div>";}
+        
+        echo "<div id='show$row2[$db_task_id]' style='display:none'>";
         while($row = $result->fetch_assoc()){
 
             switch ($row[$db_notifications_type]){
