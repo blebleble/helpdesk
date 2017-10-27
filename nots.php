@@ -163,12 +163,11 @@
         
         $result = $connection->query($sql);
 		if (mysqli_num_rows($result)>0){
-		echo "<div class='clickme' id='$row2[$db_task_id]'> $row2[$db_task_name]</div>";}
+		echo "<div class='clickme' id='$row2[$db_task_id]' style='cursor:pointer'> $row2[$db_task_name]</div>";}
 		
-
-		
+		echo "<div id='show$row2[$db_task_id]' style='display:none>";
         while($row = $result->fetch_assoc()){
-           // echo "<div id='show$row2[$db_task_id]'>";
+
             switch ($row[$db_notifications_type]){
                 case 1: $text = "Dodano nowy komentarz do aktywnego zadania: ";
                         break;
@@ -233,8 +232,8 @@
                 echo "<input class='checkboxr' type='checkbox' name='not[]' id='not' value='$row[$db_nots_user_id]'><a href=\"$url\" style='color:black; text-decoration: none'><i>$row[$db_notifications_date]</i>".'    '." $text</a>".'<br><br>'; 
                 echo "</p>";
                 }
-        }          //echo '</div>';
-
+        }             
+        echo '</div>';
     }
 
 
@@ -251,8 +250,9 @@
    
 </body>
 </html>
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js"></script>
 <script type="text/javascript" src="js/changeChecked.js"></script>
 <script type="text/javascript" src="js/change_readnots.js"></script>
 <script type="text/javascript" src="js/notifications.js"></script>
 <script type="text/javascript" src="js/list.js"></script>
-<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
