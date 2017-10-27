@@ -163,11 +163,21 @@
         
         $result = $connection->query($sql);
 		if (mysqli_num_rows($result)>0){
+<<<<<<< HEAD
 		echo "<div class='clickme' id='$row2[$db_task_id]' style='cursor:pointer'> $row2[$db_task_name]</div>";}
+=======
+		echo "<div class='clickme' id='$row2[$db_task_id]'> $row2[$db_task_name]</div>";}
+		
+
+>>>>>>> 37727b52c4d161422a378451530ec91b01b51174
 		
 		echo "<div id='show$row2[$db_task_id]' style='display:none'>";
         while($row = $result->fetch_assoc()){
+<<<<<<< HEAD
 
+=======
+           // echo "<div id='show$row2[$db_task_id]'>";
+>>>>>>> 37727b52c4d161422a378451530ec91b01b51174
             switch ($row[$db_notifications_type]){
                 case 1: $text = "Dodano nowy komentarz do aktywnego zadania: ";
                         break;
@@ -232,8 +242,13 @@
                 echo "<input class='checkboxr' type='checkbox' name='not[]' id='not' value='$row[$db_nots_user_id]'><a href=\"$url\" style='color:black; text-decoration: none'><i>$row[$db_notifications_date]</i>".'    '." $text</a>".'<br><br>'; 
                 echo "</p>";
                 }
+<<<<<<< HEAD
         }             
         echo '</div>';
+=======
+        }          //echo '</div>';
+
+>>>>>>> 37727b52c4d161422a378451530ec91b01b51174
     }
 
 
@@ -256,3 +271,7 @@
 <script type="text/javascript" src="js/change_readnots.js"></script>
 <script type="text/javascript" src="js/notifications.js"></script>
 <script type="text/javascript" src="js/list.js"></script>
+<<<<<<< HEAD
+=======
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+>>>>>>> 37727b52c4d161422a378451530ec91b01b51174
