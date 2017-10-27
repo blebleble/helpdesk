@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 //zakładka dla managera, wyświetla wszystkie zadania i podzadania
 	session_start();
 	
