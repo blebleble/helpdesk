@@ -31,7 +31,7 @@
                 $db_subtask_done = 'done';
                 $db_subtask_conf = 'confirmed';
                 $db_subtask_block = 'blocked';
-				$db_subtask_row = 'row_order';
+	       $db_subtask_row = 'row_order';
 
         $db_functions_tab = 'functions';
                 $db_functions_id = 'function_ID';
@@ -65,4 +65,5 @@
                 $db_nots_user_subtaskid = 'subtask_ID';
                 $db_nots_user_readnots = 'read_nots';
                 $db_nots_user_delete= 'delete_n';
+                $db_nots_user_color='nots_color';
 ?>

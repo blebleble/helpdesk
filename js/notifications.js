@@ -33,6 +33,6 @@ function del(ver){
             break;
     }
     
-    
+
     return confirm(text);
 }                

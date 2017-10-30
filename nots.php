@@ -201,6 +201,17 @@
                         $text = "Użytkownik <b>".$row2[$db_users_fname]." ".$row2[$db_users_lname]."</b> zakończył swoje podzadanie: <b>".$row2[$db_subtask_name]."</b>";
                         break;
             }
+
+            //input "zmiana koloru"
+            echo "Wybierz kolor tła;
+            <input id='$row[$db_nots_user_id]' type='color' class='color' value='#ff0000'>";
+
+
+
+            //zmiana koloru tła
+            echo '<div class="teamtask-form" style="background-color: $db_nots_user_color"></div>';
+
+
             //nazwa subtasku (type z przedziału 4-5)
             if ($row[$db_notifications_type] == 4 || $row[$db_notifications_type] == 5){
                 $sql_subtaskname = "SELECT $db_subtask_name FROM $db_subtask_tab WHERE $db_subtask_id = $row[$db_nots_user_subtaskid]";
@@ -208,7 +219,7 @@
                 $row_name = $result_subtaskname->fetch_assoc();
                 $text = $text."<b>".$row_name[$db_subtask_name]."</b> w zadaniu: ";
                 }
-            //naswa tasku
+            //nazwa tasku
             if($row[$db_notifications_type] <= 5){
                 $sql_taskname = "SELECT $db_task_name FROM $db_task_tab WHERE $db_task_id = $row[$db_nots_user_taskid]";
                 $result_taskname = $connection->query($sql_taskname);
@@ -221,6 +232,7 @@
                 echo "<input class='checkboxu' type='checkbox' name='not[]' id='not' value='$row[$db_nots_user_id]'>   <a  href='javascript:change_read($row[$db_nots_user_id],$row[$db_nots_user_subtaskid], $row[$db_nots_user_taskid], $row[$db_notifications_type])' style='color:black; text-decoration: none'><i>$row[$db_notifications_date]</i>".'    '." $text</a>".'<br><br>';
                 echo "</p>";
                 echo "</div>";
+
             }else {
                 if ($row[$db_notifications_type] >= 6){
                     $url = "team_tasks.php";
@@ -228,9 +240,13 @@
                 else{
                     $url = "tasks_all.php?sid=$row[$db_nots_user_subtaskid]&tid=$row[$db_nots_user_taskid]";
                 }
+
                 echo "<p class='team-taskform'>";
                 echo "<input class='checkboxr' type='checkbox' name='not[]' id='not' value='$row[$db_nots_user_id]'><a href=\"$url\" style='color:black; text-decoration: none'><i>$row[$db_notifications_date]</i>".'    '." $text</a>".'<br><br>'; 
                 echo "</p>";
+
+                
+                
                 }
         }             
         echo '</div>';
@@ -250,6 +266,9 @@
    
 </body>
 </html>
+
+
+
 <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js"></script>
 <script type="text/javascript" src="js/changeChecked.js"></script>

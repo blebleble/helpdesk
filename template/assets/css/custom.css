@@ -38,6 +38,7 @@
 
 
 
+
 body {
     font-family: 'Open Sans', sans-serif;
 }
@@ -185,7 +186,7 @@ p {
         p.team-taskform{
          font-size: 13px;
          margin-left: 30px;
-       
+        
         }
         
         p.team-subtaskform{ 

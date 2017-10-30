@@ -4,7 +4,7 @@ jQuery(document).ready(function(){
 	
 clickme();
 save_position();
-
+colorChange();
 	
 	
 	
@@ -34,3 +34,15 @@ function save_position(){
   }
   
 }
+
+function colorChange(){
+$(".color").change(function(){
+    var id = this.id;
+    var color = this.value;
+    alert(color);
+     $.post("changeColor.php", {id: id, color: color}, function(result){
+
+
+
+});
+})}
