@@ -13,7 +13,9 @@ window.onload= function getNotifications(){
 
         setTimeout(function(){
         getNotifications();
-        }, 17000);
+        }, 17000);	
+		
+		
 }
                 
 function del(ver){

@@ -175,7 +175,7 @@
                     . "Data rozpoczęcia: $row2[$db_task_sdate] <br> "
                     . "Data zakończenia: $row2[$db_task_edate]<br> "
                     . "Opis: $row2[$db_task_description]<br> "
-                    . "<br>----------------------------------------------------<br> </span> </a><span></span><h2>"; 
+                    . "<br>----------------------------------------------------<br> </span> </a></h2>"; 
 
             echo "<a><span>Data rozpoczęcia: $row[$db_subtask_sdate]  <br> ";
             echo "Data zakończenia: $row[$db_subtask_edate]<br><br>";
@@ -217,9 +217,9 @@
 		
 		
 		if (mysqli_num_rows($result)>0){
-			echo "<div class='clickme' style='cursor:pointer' id='$row_task[$db_task_id]'> $row_task[$db_task_name]</div>";
+			echo "<div class='clickme' style='cursor:pointer' id='a$row_task[$db_task_id]'> $row_task[$db_task_name]</div>";
 
-			echo "<div class='row' id='show$row_task[$db_task_id]' style='display:none'>";
+			echo "<div class='row' id='showa$row_task[$db_task_id]' style='display:none'>";
          
 			echo '<div class="timeline-centeredleft">';
 		
@@ -246,7 +246,7 @@
                     . "Data rozpoczęcia: $row2[$db_task_sdate] <br> "
                     . "Data zakończenia: $row2[$db_task_edate]<br> "
                     . "Opis: $row2[$db_task_description]<br> "
-                    . "<br>----------------------------------------------------<br> </span> </a><span></span><h2>";
+                    . "<br>----------------------------------------------------<br> </span> </a></h2>";
             
             echo "<a><span>Data rozpoczęcia: $row[$db_subtask_sdate]  <br> ";
             echo "Data zakończenia: $row[$db_subtask_edate]<br><br>";
@@ -254,7 +254,7 @@
             echo "<form action='unactive_subtask.php' method='post'>";
             echo "<input type='hidden' name='active' value=1>";
             echo "<input type='hidden' name='tid' value=$row[$db_subtask_taskid]>";
-            echo "<input type='hidden' name='sid' value=$row[$db_subtask_id]>";
+            echo "<input type='hidden' name='sid' value=$row[$db_subtask_id]></span> </a>";
             echo "<br /><button type='submit'>Przenieś do zrobionych</button></center>";
             echo "</form>";
             echo'</div>
