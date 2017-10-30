@@ -7,8 +7,9 @@ require_once "database/connect.php";
     
 $connection = db_connection(); 
 
-$sql = "INSERT INTO $db_nots_user_tab ($db_nots_user_color) VALUES ('$color') WHERE $db_nots_user_id = $id";
+$sql = "UPDATE $db_nots_user_tab  SET $db_nots_user_color='$color' WHERE $db_nots_user_id = $id";
 $connection->query($sql);
+echo $sql;
 
 
  ?>
