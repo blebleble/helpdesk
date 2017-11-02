@@ -179,13 +179,16 @@ p {
 	border-color:#cecece !important;
 	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
 	background-color: #e5e5e5;
-	padding:10px, 10px, 10px, 10px;
+  max-width: 100%;
+  word-wrap:break-word;
+
         }
         
         p.team-taskform{
          font-size: 13px;
-         margin-left: 30px;
-       
+         padding-left: 20px;
+         padding-right: 20px;
+
         }
         
         p.team-subtaskform{ 
@@ -495,6 +498,12 @@ background-color: #FFF;
     margin-right:10px;
 }
 
+.color {
+  margin-right: 5px;
+
+}
+
+
 
 /*==============================================
     MEDIA QUERIES     
@@ -518,7 +527,7 @@ background-color: #FFF;
    .navbar {
  border-radius: 0px; 
 }
-   
+
 }
 
 

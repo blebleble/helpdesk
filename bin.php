@@ -19,9 +19,9 @@
     <title>HelpDesk</title>
 	<!-- BOOTSTRAP STYLES-->
     <link href="template/assets/css/bootstrap.css" rel="stylesheet" />
-        <!-- CUSTOM STYLES-->
+    <!-- CUSTOM STYLES-->
     <link href="template/assets/css/custom.css" rel="stylesheet" />
-     <!-- GOOGLE FONTS-->
+    <!-- GOOGLE FONTS-->
    <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css' />
    <link rel="Stylesheet" type="text/css" hr>
    
@@ -214,7 +214,7 @@
                 $row_name = $result_subtaskname->fetch_assoc();
                 $text = $text."<b>".$row_name[$db_subtask_name]."</b> w zadaniu: ";
                 }
-            //naswa tasku
+            //nazwa tasku
             if($row[$db_notifications_type] <= 5){
                 $sql_taskname = "SELECT $db_task_name FROM $db_task_tab WHERE $db_task_id = $row[$db_nots_user_taskid]";
                 $result_taskname = $connection->query($sql_taskname);
@@ -224,7 +224,7 @@
             if ($row[$db_nots_user_readnots]==0){
                 echo "<div class='teamtask-form'>";
                 echo "<p class='team-taskform'>";
-                echo "<input class='checkboxu' type='checkbox' name='not[]' id='not' value='$row[$db_nots_user_id]'>   <a  href='javascript:change_read($row[$db_nots_user_id],$row[$db_nots_user_subtaskid], $row[$db_nots_user_taskid], $row[$db_notifications_type])' style='color:black; text-decoration: none'><i>$row[$db_notifications_date]</i>".'    '." $text</a><input id='$row[$db_nots_user_id]' type='color' style='float:right' class='color' value='#ff0000'>".'<br><br>';
+                echo "<input class='checkboxu' type='checkbox' name='not[]' id='not' value='$row[$db_nots_user_id]'>   <a  href='javascript:change_read($row[$db_nots_user_id],$row[$db_nots_user_subtaskid], $row[$db_nots_user_taskid], $row[$db_notifications_type])' style='color:black; text-decoration: none'><i>$row[$db_notifications_date]</i>".'    '." $text</a>".'<br><br>';
                 echo "</p>";
                 echo "</div>";
             }else {
@@ -234,8 +234,8 @@
                 else{
                     $url = "tasks_all.php?sid=$row[$db_nots_user_subtaskid]&tid=$row[$db_nots_user_taskid]";
                 }
-                echo "<p class='team-taskform' style='background-color: $row[$db_nots_user_color]'>";
-                echo "<input class='checkboxr' type='checkbox' name='not[]' id='not' value='$row[$db_nots_user_id]'><a href=\"$url\" style='color:black; text-decoration: none'><i>$row[$db_notifications_date]</i>".'    '." $text</a><input id='$row[$db_nots_user_id]' type='color' style='float:right' class='color' value='#ff0000'>".'<br><br>'; 
+                echo "<p class='team-taskform' id= 'color$row[$db_nots_user_id]' style='background-color: $row[$db_nots_user_color]'>";
+                echo "<input class='checkboxr' type='checkbox' name='not[]' id='not' value='$row[$db_nots_user_id]'><a href=\"$url\" style='color:black; text-decoration: none'><i>$row[$db_notifications_date]</i>".'    '." $text</a><input id='$row[$db_nots_user_id]' type='color' style='float:right' class='color' value='$row[$db_nots_user_color]'>".'<br><br>'; 
                 echo "</p>";
                 }
         }             
