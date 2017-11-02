@@ -77,10 +77,11 @@
                    echo " <img src='$path' class='user-image img-responsive'/>";
       
                        ?>
+                       
 					</li>
 				
                     <li>
-                        <a   href="main.php" ><i "></i> Strona główna</a>
+                        <a   href="main.php" ><i "></i> Strona głównaaaaa</a>
                     </li>
                     
                     <li>
@@ -93,7 +94,7 @@
 						<li>
                         <a href="suspended.php" ><i "></i>Zawieszone</a>
                     </li>
-                   <?php 
+                   <?php
                    
                    If ($_SESSION['function']=="2"){
                       echo '<li>
