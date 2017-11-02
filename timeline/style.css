@@ -596,3 +596,17 @@ color: black;
 
 
 }
+
+.clickme
+{
+    padding: 5px;
+    margin-bottom: 10px;
+    position: relative;
+    float: left;
+    color: #fff;
+    cursor:pointer;
+    /*border: 1px solid #000;*/
+    border-radius: 5px;
+    background-color: #F2731F;
+    /*z-index: 500;*/
+}

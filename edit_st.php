@@ -59,7 +59,7 @@ if ($connection != false){
         $tid = $_POST['task'];
         $userid = $_POST['user'];
 
-        $sql = "UPDATE $db_subtask_tab SET $db_subtask_taskid='$tid' ,$db_subtask_name='$topic',$db_subtask_sdate='$sdate',$db_subtask_edate='$edate',$db_subtask_description='$desc',$db_subtask_userid='$userid' WHERE $db_subtask_id='$sid'";
+        $sql = "UPDATE $db_subtask_tab SET $db_subtask_taskid='$tid', $db_subtask_done='0' ,$db_subtask_name='$topic',$db_subtask_sdate='$sdate',$db_subtask_edate='$edate',$db_subtask_description='$desc',$db_subtask_userid='$userid' WHERE $db_subtask_id='$sid'";
         if ($result = $connection->query($sql)){
             $_SESSION['alert']= 'Edytowano podzadanie'; 
             $sql = "SELECT $db_task_edate FROM $db_task_tab WHERE $db_task_id=$tid";

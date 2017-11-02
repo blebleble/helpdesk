@@ -77,6 +77,9 @@
                     <li>
                         <a class="active-menu" href="old_tasks.php" ><i "></i>Zamknięte zadania</a>
                     </li>
+					<li>
+                        <a  href="suspended.php" ><i "></i>Zawieszone</a>
+                    </li>
                    <?php 
                    
                    If ($_SESSION['function']=="2" ){
@@ -105,9 +108,6 @@
 					<li>
                         <a  href="search.php" ><i "></i>Wyszukaj</a>
                     </li>
-					<li>
-                        <a  href="suspended.php" ><i "></i>Zawieszone</a>
-                    </li>
                     	
                 </ul>
                
@@ -120,7 +120,7 @@
                 <div class="row">
                     <div class="col-md-12">
                      <h2>Zamknięte zadania</h2> 
-                        </div>
+                         </div>
                      </div>
                  <hr />
                  <br>
@@ -129,8 +129,8 @@
                   <div style='float:left; width: 50%'>   
                       <center><font size=4px><i> Zadania krótsze niż tydzień </i></font></center>
                 
-
-	    <div class="container" >
+	    <div class="container">
+             <div  class="timeline-centeredleft">
 		
 	   <?php  
 	   
@@ -140,16 +140,20 @@
         while($row_task = $result_task->fetch_assoc()){   
 
     if ($connection != false){
-        $sql = "SELECT $db_subtask_tab.$db_subtask_id, $db_subtask_tab.$db_subtask_taskid, $db_subtask_tab.$db_subtask_name, $db_subtask_tab.$db_subtask_sdate, $db_subtask_tab.$db_subtask_edate, $db_subtask_tab.$db_subtask_description FROM $db_subtask_tab INNER JOIN $db_task_tab ON $db_subtask_tab.$db_subtask_taskid = $db_task_tab.$db_task_id WHERE  DATEDIFF( $db_subtask_tab.$db_subtask_edate, '".date("Y-m-d")."' )< 7   AND $db_subtask_tab.$db_subtask_done='1' AND $db_subtask_tab.$db_subtask_taskid='$row_task[$db_task_id]' AND $db_subtask_tab.$db_subtask_userid =". $_SESSION['id']." ORDER BY $db_task_tab.$db_task_priority DESC, $db_subtask_tab.$db_subtask_edate ASC,$db_subtask_row ASC";
+        $sql = "SELECT $db_subtask_tab.$db_subtask_id, $db_subtask_tab.$db_subtask_taskid, $db_subtask_tab.$db_subtask_name, $db_subtask_tab.$db_subtask_sdate, $db_subtask_tab.$db_subtask_edate, $db_subtask_tab.$db_subtask_description "
+                . "FROM $db_subtask_tab INNER JOIN $db_task_tab ON $db_subtask_tab.$db_subtask_taskid = $db_task_tab.$db_task_id "
+                . "WHERE  DATEDIFF( $db_subtask_tab.$db_subtask_edate, '".date("Y-m-d")."' )< 7   AND $db_subtask_tab.$db_subtask_done='1' AND $db_subtask_tab.$db_subtask_taskid='$row_task[$db_task_id]' AND $db_subtask_tab.$db_subtask_userid =". $_SESSION['id']." "
+                . "ORDER BY $db_subtask_row ASC, $db_task_tab.$db_task_priority DESC, $db_subtask_tab.$db_subtask_edate ASC";
 		$result = $connection->query($sql);
 		
 		if (mysqli_num_rows($result)>0){
-			
+			echo "<div>";
 			echo "<div class='clickme' style='cursor:pointer' id='$row_task[$db_task_id]'> $row_task[$db_task_name]</div>";
-
+                        echo "<div style='clear:both;'></div>";
 			echo "<div class='row' id='show$row_task[$db_task_id]' style='display:none'>";
          
 			echo '<div class="timeline-centeredleft">';
+
 		
         while($row = $result->fetch_assoc()){  
 		
@@ -157,7 +161,7 @@
 			$result2 = $connection->query($sql);
             $row2=$result2->fetch_assoc();
             echo "<br>";
-            echo  "<article id='$row2[$db_subtask_id]' class='timeline-entry'>
+            echo  "<article id='$row2[$db_subtask_id]' value='$row2[$db_subtask_id]' class='timeline-entry'>
                   <div class='timeline-entry-inner'>";
             if ($row2[$db_task_priority]==1){
                 echo '<div class="timeline-icon bg-priority">';}
@@ -177,30 +181,31 @@
                     . "Opis: $row2[$db_task_description]<br> "
                     . "<br>----------------------------------------------------<br> </span> </a></h2>"; 
 
-            echo "<a><span>Data rozpoczęcia: $row[$db_subtask_sdate]  <br> ";
+            echo "<a style='text-decoration: none;'><span>Data rozpoczęcia: $row[$db_subtask_sdate]  <br> ";
             echo "Data zakończenia: $row[$db_subtask_edate]<br><br>";
-            echo "Opis zadania: <br> $row[$db_subtask_description] </a></span>";
+            echo "Opis zadania: <br> $row[$db_subtask_description] </span></a>";
             echo "<form action='unactive_subtask.php' method='post'>";
             echo "<input type='hidden' name='active' value=1>";
             echo "<input type='hidden' name='tid' value=$row[$db_subtask_taskid]>";
-            echo "<input type='hidden' name='sid' value=$row[$db_subtask_id]>";
-            echo "<br /><button type='submit'>Przenieś do zrobionych</button></center>";
+            echo "<input type='hidden' name='sid' value=$row[$db_subtask_id]></span></a>";
+            echo "<br /><button type='submit'>Przenieś do aktywnych</button></center>";
             echo "</form>";
             echo'</div>
                  </div>
                  </article>';
 		}
-		echo "</div></div>";
+		echo "</div></div></div>";
 		}
         }
 		}
     ?>
     </div>
     </div>
+    </div>
                      <div style='float:left; width: 50%'> 
                       <div style='color: black; text-decoration: none;'> <center style='color: black; text-decoration: none'><font size=4px><i> Zadania dłuższe niż tydzień </i></font></center></div>
                       <div class="container">
-
+					<div  class="timeline-centeredleft">
 
                     
     <?php  
@@ -210,26 +215,28 @@
         while($row_task2 = $result_task2->fetch_assoc()){   
 		
 	
-	
     if ($connection != false){
-        $sql = "SELECT $db_subtask_tab.$db_subtask_id, $db_subtask_tab.$db_subtask_taskid, $db_subtask_tab.$db_subtask_name, $db_subtask_tab.$db_subtask_sdate, $db_subtask_tab.$db_subtask_edate, $db_subtask_tab.$db_subtask_description FROM $db_subtask_tab INNER JOIN $db_task_tab ON $db_subtask_tab.$db_subtask_taskid = $db_task_tab.$db_task_id WHERE DATEDIFF( $db_subtask_tab.$db_subtask_edate, '".date("Y-m-d")."' )>= 7  AND $db_subtask_tab.$db_subtask_done='1' AND $db_subtask_tab.$db_subtask_taskid='$row_task2[$db_task_id]' AND $db_subtask_tab.$db_subtask_userid =". $_SESSION['id']." ORDER BY $db_task_tab.$db_task_priority DESC, $db_subtask_tab.$db_subtask_edate ASC,$db_subtask_row ASC";
+        $sql = "SELECT $db_subtask_tab.$db_subtask_id, $db_subtask_tab.$db_subtask_taskid, $db_subtask_tab.$db_subtask_name, $db_subtask_tab.$db_subtask_sdate, $db_subtask_tab.$db_subtask_edate, $db_subtask_tab.$db_subtask_description "
+                . "FROM $db_subtask_tab INNER JOIN $db_task_tab ON $db_subtask_tab.$db_subtask_taskid = $db_task_tab.$db_task_id "
+                . "WHERE DATEDIFF( $db_subtask_tab.$db_subtask_edate, '".date("Y-m-d")."' )>= 7  AND $db_subtask_tab.$db_subtask_done='1' AND $db_subtask_tab.$db_subtask_taskid='$row_task2[$db_task_id]' AND $db_subtask_tab.$db_subtask_userid =". $_SESSION['id']." "
+                . "ORDER BY $db_subtask_row ASC, $db_task_tab.$db_task_priority DESC, $db_subtask_tab.$db_subtask_edate ASC";
         $result = $connection->query($sql);
-		
-		
 		if (mysqli_num_rows($result)>0){
-			echo "<div class='clickme' style='cursor:pointer' id='a$row_task[$db_task_id]'> $row_task[$db_task_name]</div>";
-
-			echo "<div class='row' id='showa$row_task[$db_task_id]' style='display:none'>";
-         
+                        echo "<div>";
+			echo "<div class='clickme' style='cursor:pointer' id='a$row_task2[$db_task_id]'> $row_task2[$db_task_name]</div>";
+                        echo "<div style='clear:both;'></div>";
+                        echo "<div class='row' id='showa$row_task2[$db_task_id]' style='display:none'>";
 			echo '<div class="timeline-centeredleft">';
 		
         while($row = $result->fetch_assoc()){   
-            $sql = "SELECT $db_task_tab.$db_task_priority, $db_subtask_tab.$db_subtask_conf, $db_subtask_tab.$db_subtask_block, $db_subtask_tab.$db_subtask_id, $db_task_tab.$db_task_id, $db_task_tab.$db_task_name, $db_task_tab.$db_task_description, $db_task_tab.$db_task_sdate, $db_task_tab.$db_task_edate, $db_users_tab.$db_users_fname, $db_users_tab.$db_users_lname FROM $db_subtask_tab INNER JOIN $db_task_tab ON $db_subtask_tab.$db_subtask_taskid=$db_task_tab.$db_task_id INNER JOIN $db_users_tab ON $db_task_tab.$db_task_userid = $db_users_tab.$db_users_id WHERE $db_task_tab.$db_task_id =".$row[$db_subtask_taskid]." AND $db_subtask_tab.$db_subtask_id=$row[$db_subtask_id]";
+            $sql = "SELECT $db_task_tab.$db_task_priority, $db_subtask_tab.$db_subtask_conf, $db_subtask_tab.$db_subtask_block, $db_subtask_tab.$db_subtask_id, $db_task_tab.$db_task_id, $db_task_tab.$db_task_name, $db_task_tab.$db_task_description, $db_task_tab.$db_task_sdate, $db_task_tab.$db_task_edate, $db_users_tab.$db_users_fname, $db_users_tab.$db_users_lname "
+                    . "FROM $db_subtask_tab INNER JOIN $db_task_tab ON $db_subtask_tab.$db_subtask_taskid=$db_task_tab.$db_task_id INNER JOIN $db_users_tab ON $db_task_tab.$db_task_userid = $db_users_tab.$db_users_id "
+                    . "WHERE $db_task_tab.$db_task_id =".$row[$db_subtask_taskid]." AND $db_subtask_tab.$db_subtask_id=$row[$db_subtask_id]";
             $result2 = $connection->query($sql);
             $row2=$result2->fetch_assoc();
             echo "<br/>";
-            echo  '<article class="timeline-entry">
-                  <div class="timeline-entry-inner">';
+            echo  "<article id='$row2[$db_subtask_id]' value='$row2[$db_subtask_id]' class='timeline-entry'>
+                  <div class='timeline-entry-inner'>";
             if ($row2[$db_task_priority] == 1){
                 echo '<div class="timeline-icon bg-priority">';}
             elseif ($row2[$db_subtask_conf]==0 && $row2[$db_subtask_block]==0){
@@ -248,20 +255,20 @@
                     . "Opis: $row2[$db_task_description]<br> "
                     . "<br>----------------------------------------------------<br> </span> </a></h2>";
             
-            echo "<a><span>Data rozpoczęcia: $row[$db_subtask_sdate]  <br> ";
+            echo "<a style='text-decoration: none;'><span>Data rozpoczęcia: $row[$db_subtask_sdate]  <br> ";
             echo "Data zakończenia: $row[$db_subtask_edate]<br><br>";
             echo "Opis zadania: <br> $row[$db_subtask_description]";
             echo "<form action='unactive_subtask.php' method='post'>";
             echo "<input type='hidden' name='active' value=1>";
             echo "<input type='hidden' name='tid' value=$row[$db_subtask_taskid]>";
-            echo "<input type='hidden' name='sid' value=$row[$db_subtask_id]></span> </a>";
-            echo "<br /><button type='submit'>Przenieś do zrobionych</button></center>";
+            echo "<input type='hidden' name='sid' value=$row[$db_subtask_id]></span></a>";
+            echo "<br /><button type='submit'>Przenieś do aktywnych</button></center>";
             echo "</form>";
             echo'</div>
                  </div>
                  </article>';
         }
-		echo "</div></div>";
+		echo "</div></div></div>";
 		}
         }
 		}

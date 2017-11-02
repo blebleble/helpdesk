@@ -85,6 +85,9 @@
                     <li>
                         <a  href="old_tasks.php" ><i "></i>Zamknięte zadania</a>
                     </li>
+						<li>
+                        <a  href="suspended.php" ><i "></i>Zawieszone</a>
+                    </li>
                    <?php 
                    
                     if ($_SESSION['function']=="2"){
@@ -111,9 +114,7 @@
 					<li>
                         <a  href="search.php" ><i "></i>Wyszukaj</a>
                     </li>
-					<li>
-                        <a  href="suspended.php" ><i "></i>Zawieszone</a>
-                    </li>
+				
                 </ul>
                
             </div>

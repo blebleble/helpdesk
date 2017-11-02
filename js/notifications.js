@@ -1,5 +1,5 @@
 window.onload= function getNotifications(){
-
+	
 
        $.ajax({
         type:"GET", 
@@ -13,7 +13,7 @@ window.onload= function getNotifications(){
 
         setTimeout(function(){
         getNotifications();
-        }, 17000);	
+        }, 17000);
 		
 		
 }
@@ -35,6 +35,6 @@ function del(ver){
             break;
     }
     
-
+    
     return confirm(text);
 }                

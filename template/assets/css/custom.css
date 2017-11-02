@@ -38,7 +38,6 @@
 
 
 
-
 body {
     font-family: 'Open Sans', sans-serif;
 }
@@ -186,7 +185,7 @@ p {
         p.team-taskform{
          font-size: 13px;
          margin-left: 30px;
-        
+       
         }
         
         p.team-subtaskform{ 
@@ -208,16 +207,16 @@ p {
 }    
 
 
-
 	.circle2 {
+	margin-right:10px;
+	float:left;
+	color: white;
 	width: 30px;
 	height: 30px;
 	background-color: #cc0000;
 	border-radius: 100%;
-         position: relative;
          text-align: center;
-}    
-
+}
 
 /*==============================================
    DASHBOARD STYLES    
