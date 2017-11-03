@@ -162,7 +162,7 @@ $(document).ready(function() {
 					</li>
 				
   <li><a href="main.php" class="w3-bar-item w3-button">Strona główna</a></li>
-  <li><a class="w3-bar-item w3-button" id='click' name='a'>Zadania</a></li>
+  <li><a href='javascript:;'class="w3-bar-item w3-button" name='a'>Zadania</a></li>
   <div class="panela">
   <li><a href="tasks.php" class="w3-bar-item w3-button" style="color: white">Moje aktywne zadania</a></li>
   <li><a href="old_tasks.php" class="w3-bar-item w3-button" style="color: white">Zamknięte zadania</a></li>
@@ -178,8 +178,8 @@ $(document).ready(function() {
 
   <?php
                 If ($_SESSION['function']=="2" ){
-                echo' <div class="w3-bar-item w3-button accordion"><li>Dodaj</li></div>
-            <div class="panel">
+                echo' <li><a href="javascript:;" class="w3-bar-item w3-button" name="b">Dodaj</a></li>
+            <div class="panelb">
             <li><a href="add_tasks.php" class="w3-bar-item w3-button" style="color: white">Dodaj zadanie</a><li>
             <li><a href="add_subtasks.php" class="w3-bar-item w3-button" style="color: white">Dodaj podzadanie</a><li>
             </div>';
@@ -227,8 +227,8 @@ $(document).ready(function() {
 <script>
 
 
-$( "#click" ).click(function() {
+$( ".w3-button" ).click(function() {
 	var element= this.name;
-	$( ".panel"+element ).toggle();
+	$( ".panel"+element).toggle();
 });
 </script>
