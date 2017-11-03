@@ -162,8 +162,8 @@ $(document).ready(function() {
 					</li>
 				
   <li><a href="main.php" class="w3-bar-item w3-button">Strona główna</a></li>
-  <div class="w3-bar-item w3-button accordion"><li>Zadania</li></div>
-  <div class="panel">
+  <li><a class="w3-bar-item w3-button" id='click' name='a'>Zadania</a></li>
+  <div class="panela">
   <li><a href="tasks.php" class="w3-bar-item w3-button" style="color: white">Moje aktywne zadania</a></li>
   <li><a href="old_tasks.php" class="w3-bar-item w3-button" style="color: white">Zamknięte zadania</a></li>
   <li><a href="suspended.php" class="w3-bar-item w3-button" style="color: white">Zawieszone</a></li>
@@ -225,18 +225,10 @@ $(document).ready(function() {
 </html>
 <script type="text/javascript" src="js/notifications.js"></script>
 <script>
-var acc = document.getElementsByClassName("accordion");
-var i;
 
-for (i = 0; i < acc.length; i++) {
-    acc[i].onclick = function(){
-        this.classList.toggle("active");
-        var panel = this.nextElementSibling;
-        if (panel.style.display === "block") {
-            panel.style.display = "none";
-        } else {
-            panel.style.display = "block";
-        }
-    }
-}
+
+$( "#click" ).click(function() {
+	var element= this.name;
+	$( ".panel"+element ).toggle();
+});
 </script>
