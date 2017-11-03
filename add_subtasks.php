@@ -77,45 +77,56 @@
                        ?>
 					</li>
 				
-                    <li>
-                        <a   href="main.php" ><i "></i> Strona główna</a>
+                    
+                     <li>
+                        <a href="main.php" ><i "></i> Strona główna</a>
                     </li>
                     
-                    <li>
-                        <a  href="tasks.php" ><i "></i>Moje aktywne zadania</a>
-                    </li>			
-	 
-                    <li>
-                        <a  href="old_tasks.php" ><i "></i>Zamknięte zadania</a>
-                    </li>
-						<li>
-                        <a  href="suspended.php" ><i "></i>Zawieszone</a>
-                    </li>
-                   <?php 
+            <li><a href="#">Zadania</a>
+              <ul>
+               <li><a href="tasks.php">Moje aktywne zadania</a></li>
+               <li><a href="old_tasks.php">Zamknięte zadania</a></li>
+               <li><a href="suspended.php">Zawieszone</a></li>
+               <?php 
                    
-                   If ($_SESSION['function']=="2"){
-                      echo '<li>
-                        <a  href="add_tasks.php"><i "></i> Dodaj zadanie</a>
-                    </li>';  
-                      echo '<li> <a class= "active-menu" href="add_subtasks.php"><i "></i> Dodaj podzadanie</a>
-                    </li>';
-                       echo '<li><a href="team_tasks.php"><i "></i> Zadania grupy</a>
-                    </li>';
-					 echo '<li><a href="managers.php"><i "></i> Zadania innych managerów</a>
-                    </li>';
-                   } 
-                   
-                   
+                   If ($_SESSION['function']=="2" ){
+                      echo '<li><a href="team_tasks.php"><i "></i> Zadania grupy</a></li>';
+                      echo '<li><a href="managers.php"><i "></i> Zadania innych menadżerów</a></li>';
+                   }
                    ?>
+              </ul>
+            </li>
+
+        <?php
+                If ($_SESSION['function']=="2" ){
+                echo' <li><a class="active-menu" href="#">Dodaj</a>
+          <ul>
+               <li><a href="add_tasks.php">Dodaj zadanie</a></li>
+               <li><a href="add_subtasks.php">Dodaj podzadanie</a></li>
+          </ul>';}
+        ?>
+                   
+          </li>
+
+
+
+
+        <?php         
+                If ($_SESSION['function']=="1"){
+                echo '<li>
+                <a  href="add_user.php"><i "></i> Dodaj użytkownika</a>
+                </li>';    
+                }
+        ?>
                     <li>
                         <a  href="edit_profile.php" ><i "></i>Edytuj profil</a>
                     </li>
-					
-					<li>
+          
+          <li>
                         <a  href="search.php" ><i "></i>Wyszukaj</a>
                     </li>
-				
-                    	
+        
+                      
                 </ul>
                
             </div>

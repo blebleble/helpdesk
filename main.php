@@ -69,7 +69,7 @@
 	</script>
         
 <?php 
-If($_SESSION['function']=="2" ){ ///// <-------  tuuuuu sie to zaczyna ?>  
+If($_SESSION['function']=="2" ){ ///// <-------  tuuuuu sie to zaczyna ?>
 
 
   <script>
@@ -101,7 +101,7 @@ $(document).ready(function() {
                 $connection->close();
                 }
                 ?>  
-                ]
+                ] 
         });
 
 });
@@ -116,8 +116,19 @@ $(document).ready(function() {
     <div style="color: white;
     padding: 15px 50px 5px 50px;
     float: right;
+    
     font-size: 16px;"> <div class="circle" id="circle"> </div><a href="nots.php" class="btn btn-danger square-btn-adjust">Powiadomienia</a> 
-        <a href="logout.php" class="btn btn-danger square-btn-adjust">Wyloguj</a> 
+    
+<div class="dropdown">
+  <button class="dropbtn">Profil</button>
+    <div class="dropdown-content">
+    <a href="edit_profile.php" class="w3-bar-item w3-button">Edytuj profil</a>
+    <a href="logout.php">Wyloguj</a> 
+    </div>
+</div>
+
+
+        
     </div>
         </nav>   
            <!-- /. NAV TOP  -->
@@ -150,57 +161,33 @@ $(document).ready(function() {
                        ?>
 					</li>
 				
-                    <li>
-                        <a  class="active-menu" href="main.php" ><i "></i> Strona głównaaa</a>
-                    </li>
-                    
-            <li><a href="#">Zadania</a>
-              <ul>
-               <li><a href="tasks.php">Moje aktywne zadania</a></li>
-               <li><a href="old_tasks.php">Zamknięte zadania</a></li>
-               <li><a href="suspended.php">Zawieszone</a></li>
-               <?php 
+  <li><a href="main.php" class="w3-bar-item w3-button">Strona główna</a></li>
+  <div class="w3-bar-item w3-button accordion"><li>Zadania</li></div>
+  <div class="panel">
+  <li><a href="tasks.php" class="w3-bar-item w3-button" style="color: white">Moje aktywne zadania</a></li>
+  <li><a href="old_tasks.php" class="w3-bar-item w3-button" style="color: white">Zamknięte zadania</a></li>
+  <li><a href="suspended.php" class="w3-bar-item w3-button" style="color: white">Zawieszone</a></li>
+<?php 
                    
                    If ($_SESSION['function']=="2" ){
-                      echo '<li><a href="team_tasks.php"><i "></i> Zadania grupy</a></li>';
-                      echo '<li><a href="managers.php"><i "></i> Zadania innych menadżerów</a></li>';
+                      echo '<li><a href="team_tasks.php" style="color: white"><i "></i> Zadania grupy</a></li>';
+                      echo '<li><a href="managers.php" style="color: white"><i "></i> Zadania innych menadżerów</a></li>';
                    }
                    ?>
-              </ul>
-            </li>
+</div>
 
-        <?php
+  <?php
                 If ($_SESSION['function']=="2" ){
-                echo' <li><a href="#">Dodaj</a>
-              }
-          <ul>
-               <li><a href="add_tasks.php">Dodaj zadanie</a></li>
-               <li><a href="add_subtasks.php">Dodaj podzadanie</a></li>
-          </ul>';}
-        ?>
-                   
-          </li>
+                echo' <div class="w3-bar-item w3-button accordion"><li>Dodaj</li></div>
+            <div class="panel">
+            <li><a href="add_tasks.php" class="w3-bar-item w3-button" style="color: white">Dodaj zadanie</a><li>
+            <li><a href="add_subtasks.php" class="w3-bar-item w3-button" style="color: white">Dodaj podzadanie</a><li>
+            </div>';
+            
+  }
+  ?>
 
-
-
-
-        <?php         
-                If ($_SESSION['function']=="1"){
-                echo '<li>
-                <a  href="add_user.php"><i "></i> Dodaj użytkownika</a>
-                </li>';    
-                }
-        ?>
-                    <li>
-                        <a  href="edit_profile.php" ><i "></i>Edytuj profil</a>
-                    </li>
-					
-					<li>
-                        <a  href="search.php" ><i "></i>Wyszukaj</a>
-                    </li>
-				
-                    	
-                </ul>
+  <li><a href="search.php" class="w3-bar-item w3-button">Wyszukaj</a></li>
                
             </div>
             
@@ -237,3 +224,19 @@ $(document).ready(function() {
 </body>
 </html>
 <script type="text/javascript" src="js/notifications.js"></script>
+<script>
+var acc = document.getElementsByClassName("accordion");
+var i;
+
+for (i = 0; i < acc.length; i++) {
+    acc[i].onclick = function(){
+        this.classList.toggle("active");
+        var panel = this.nextElementSibling;
+        if (panel.style.display === "block") {
+            panel.style.display = "none";
+        } else {
+            panel.style.display = "block";
+        }
+    }
+}
+</script>
