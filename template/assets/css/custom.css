@@ -603,15 +603,13 @@ li  > .w3-bar-item:hover {
 }
 
 .panela{
-  text-align: center;
+  margin-left: 20%;
   display: none;
+  line-height: 35px;
 }
 
 .panelb{
-  text-align: center;
+  margin-left: 20%;
   display: none;
-}
-
-a:hover{
-  background-color: black;
+  line-height: 35px;
 }
