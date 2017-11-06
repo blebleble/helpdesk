@@ -35,7 +35,13 @@
     padding: 15px 50px 5px 50px;
     float: right;
     font-size: 16px;"> <div class="circle" id="circle"></div> <a href="nots.php" class="btn btn-danger square-btn-adjust">Powiadomienia</a>
-        <a href="logout.php" class="btn btn-danger square-btn-adjust">Wyloguj</a> </div>
+       <div class="dropdown">
+  <button class="dropbtn">Profil</button>
+    <div class="dropdown-content">
+    <a href="edit_profile.php" class="w3-bar-item w3-button">Edytuj profil</a>
+    <a href="logout.php">Wyloguj</a> 
+    </div>
+</div>
         </nav>   
            <!-- /. NAV TOP  -->
                 <nav class="navbar-default navbar-side" role="navigation">
@@ -61,65 +67,42 @@
                     $path=$row2['link'];
                     
                     
-                   echo " <img src='$path' class='user-image img-responsive'/>";
+                          echo " <img src='$path' class='user-image img-responsive'/>";
       
                        ?>
-				  </li>
-        
-                     <li>
-                        <a href="main.php" ><i "></i> Strona główna</a>
-                    </li>
-                    
-            <li><a class="active-menu" href="#">Zadania</a>
-              <ul>
-               <li><a href="tasks.php">Moje aktywne zadania</a></li>
-               <li><a href="old_tasks.php">Zamknięte zadania</a></li>
-               <li><a href="suspended.php">Zawieszone</a></li>
-               <?php 
-                   
-                   If ($_SESSION['function']=="2" ){
-                      echo '<li><a href="team_tasks.php"><i "></i> Zadania grupy</a></li>';
-                      echo '<li><a href="managers.php"><i "></i> Zadania innych menadżerów</a></li>';
-                   }
-                   ?>
-              </ul>
-            </li>
-
-        <?php
-                If ($_SESSION['function']=="2" ){
-                echo' <li><a href="#">Dodaj</a>
-          <ul>
-               <li><a href="add_tasks.php">Dodaj zadanie</a></li>
-               <li><a href="add_subtasks.php">Dodaj podzadanie</a></li>
-          </ul>';}
-        ?>
-                   
           </li>
 
+  <li><a href="main.php" class="w3-bar-item w3-button">Strona główna</a></li>
+  <li><a class="w3-bar-item w3-button active-menu" name='a' style="cursor:pointer">Zadania</a></li>
+  <div class="panela">
+  <li><a href="tasks.php" class="w3-bar-item w3-button">Moje aktywne zadania</a></li>
+  <li><a href="old_tasks.php" class="w3-bar-item w3-button">Zamknięte zadania</a></li>
+  <li><a href="suspended.php" class="w3-bar-item w3-button">Zawieszone</a></li>
+<?php 
+                   
+                   If ($_SESSION['function']=="2" ){
+                      echo '<li><a href="team_tasks.php" style="color:white">Zadania grupy</a></li>';
+                      echo '<li><a href="managers.php" style="color:white">Zadania innych menadżerów</a></li>';
+                   }
+                   ?>
+</div>
 
+  <?php
+                If ($_SESSION['function']=="2" ){
+                echo' <li><a class="w3-bar-item w3-button" name="b" style="cursor: pointer">Dodaj</a></li>';
+       
+  }
+  ?>
+<div class="panelb">
+            <li><a href="add_tasks.php" class="w3-bar-item w3-button">Dodaj zadanie</a><li>
+            <li><a href="add_subtasks.php" class="w3-bar-item w3-button">Dodaj podzadanie</a><li>
+</div>
 
-
-        <?php         
-                If ($_SESSION['function']=="1"){
-                echo '<li>
-                <a  href="add_user.php"><i "></i> Dodaj użytkownika</a>
-                </li>';    
-                }
-        ?>
-                    <li>
-                        <a  href="edit_profile.php" ><i "></i>Edytuj profil</a>
-                    </li>
-          
-          <li>
-                        <a  href="search.php" ><i "></i>Wyszukaj</a>
-                    </li>
-        
-                      
-                </ul>
+  <li><a href="search.php" class="w3-bar-item w3-button">Wyszukaj</a></li>
                
             </div>
             
-        </nav>  
+        </nav> 
         <!-- /. NAV SIDE  -->
         <div id="page-wrapper" >
             <div id="page-inner">
@@ -296,3 +279,11 @@
  <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js"></script>
 <script type="text/javascript" src="js/notifications.js"></script>
 <script type="text/javascript" src="js/list.js"></script>
+<script>
+
+
+$( ".w3-button" ).click(function() {
+  var element= this.name;
+  $( ".panel"+element ).toggle();
+});
+</script>

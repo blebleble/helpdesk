@@ -35,7 +35,13 @@
     padding: 15px 50px 5px 50px;
     float: right;
     font-size: 16px;"><div class="circle" id="circle"> </div> <a href="nots.php" class="btn btn-danger square-btn-adjust">Powiadomienia</a>
-        <a href="logout.php" class="btn btn-danger square-btn-adjust">Wyloguj</a> </div>
+       <div class="dropdown">
+  <button class="dropbtn">Profil</button>
+    <div class="dropdown-content">
+    <a href="edit_profile.php" class="w3-bar-item w3-button">Edytuj profil</a>
+    <a href="logout.php">Wyloguj</a> 
+    </div>
+</div>
         </nav>   
            <!-- /. NAV TOP  -->
                 <nav class="navbar-default navbar-side" role="navigation">
@@ -61,49 +67,42 @@
                     $path=$row2['link'];
                     
                     
-                   echo " <img src='$path' class='user-image img-responsive'/>";
+              echo " <img src='$path' class='user-image img-responsive'/>";
       
                        ?>
-					</li>
-				
-                    <li>
-                        <a  href="main.php" ><i "></i> Strona główna</a>
-                    </li>
-                    
-                    <li>
-                        <a  href="tasks.php" ><i "></i> Moje aktywne zadania</a>
-                    </li>			
-	 
-                  <li>
-                        <a  href="old_tasks.php" ><i "></i>Zamknięte zadania</a>
-                    </li>
-					<li>
-                        <a  href="suspended.php" ><i "></i>Zawieszone</a>
-                    </li>
-                   <?php 
+          </li>
+
+  <li><a href="main.php" class="w3-bar-item w3-button active-menu">Strona główna</a></li>
+  <li><a class="w3-bar-item w3-button" name='a' style="cursor:pointer">Zadania</a></li>
+  <div class="panela">
+  <li><a href="tasks.php" class="w3-bar-item w3-button">Moje aktywne zadania</a></li>
+  <li><a href="old_tasks.php" class="w3-bar-item w3-button">Zamknięte zadania</a></li>
+  <li><a href="suspended.php" class="w3-bar-item w3-button">Zawieszone</a></li>
+<?php 
                    
                    If ($_SESSION['function']=="2" ){
-                      echo '<li>
-                        <a  href="add_tasks.php"><i "></i> Dodaj zadanie</a>
-                    </li>';  
-                      
-                     echo ' <li><a href="add_subtasks.php"><i "></i> Dodaj podzadanie</a>
-                    </li>';
-                      echo '<li><a href="team_tasks.php"><i "></i> Zadania grupy</a>
-                    </li>';
+                      echo '<li><a href="team_tasks.php" style="color:white">Zadania grupy</a></li>';
+                      echo '<li><a href="managers.php" style="color:white">Zadania innych menadżerów</a></li>';
                    }
- 
                    ?>
-				   <li>
-                        <a  href="search.php" ><i "></i>Wyszukaj</a>
-                    </li>
-					
-                    	
-                </ul>
+</div>
+
+  <?php
+                If ($_SESSION['function']=="2" ){
+                echo' <li><a class="w3-bar-item w3-button" name="b" style="cursor: pointer">Dodaj</a></li>';
+       
+  }
+  ?>
+<div class="panelb">
+            <li><a href="add_tasks.php" class="w3-bar-item w3-button">Dodaj zadanie</a><li>
+            <li><a href="add_subtasks.php" class="w3-bar-item w3-button">Dodaj podzadanie</a><li>
+</div>
+
+  <li><a href="search.php" class="w3-bar-item w3-button">Wyszukaj</a></li>
                
             </div>
             
-        </nav>  
+        </nav>   
         <!-- /. NAV SIDE  -->
         <div id="page-wrapper" >
             <div id="page-inner">
@@ -159,3 +158,11 @@ require_once "database/connect.php";
 <script type="text/javascript" src="js/datefield2.js"></script>
 <script type="text/javascript" src="js/notifications.js"></script>
  <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+<script>
+
+
+$( ".w3-button" ).click(function() {
+  var element= this.name;
+  $( ".panel"+element ).toggle();
+});
+</script>

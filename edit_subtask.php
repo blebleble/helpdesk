@@ -36,7 +36,13 @@
     padding: 15px 50px 5px 50px;
     float: right;
     font-size: 16px;"><div class="circle" id="circle"></div> <a href="nots.php" class="btn btn-danger square-btn-adjust">Powiadomienia</a>
-        <a href="logout.php" class="btn btn-danger square-btn-adjust">Wyloguj</a> </div>
+        <div class="dropdown">
+  <button class="dropbtn">Profil</button>
+    <div class="dropdown-content">
+    <a href="edit_profile.php" class="w3-bar-item w3-button">Edytuj profil</a>
+    <a href="logout.php">Wyloguj</a> 
+    </div>
+</div>
         </nav>   
            <!-- /. NAV TOP  -->
                 <nav class="navbar-default navbar-side" role="navigation">
