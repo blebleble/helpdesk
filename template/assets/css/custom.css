@@ -379,7 +379,7 @@ font-size: 15px;
 font-weight: 700;
 }
 .active-menu {
-    background-color:#e0610d!important;
+    background-color:#e0610d!important 
 }
 
 .arrow {
@@ -624,3 +624,9 @@ margin-left: 20%;
 background-color: black;
 width: 100%;
 }
+
+.active
+{
+  background-color: orange;
+}
+
