@@ -20,6 +20,10 @@
     color: white;
 }
 
+a:hover {
+  text-decoration: none;
+}
+
 .closebtn {
     margin-left: 15px;
     color: white;
@@ -586,4 +590,26 @@ div.panel {
 
 .dropdown:hover .dropbtn {
     background-color: #3e8e41;
+}
+
+li > .w3-button {
+  color: white;
+}
+
+li  > .w3-bar-item:hover {
+  color: white;
+  background-color: black;
+  text-decoration: none;
+}
+
+.panela{
+  margin-left: 20%;
+  display: none;
+  line-height: 35px;
+}
+
+.panelb{
+  margin-left: 20%;
+  display: none;
+  line-height: 35px;
 }
