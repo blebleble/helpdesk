@@ -68,48 +68,38 @@
                     $path=$row2['link'];
                     
                     
-                   echo " <img src='$path' class='user-image img-responsive'/>";
+                    echo " <img src='$path' class='user-image img-responsive'/>";
       
                        ?>
-					</li>
-				
-                    <li>
-                        <a   href="main.php" ><i "></i> Strona główna</a>
-                    </li>
-                    
-                    <li>
-                        <a  href="tasks.php" ><i "></i>Moje aktywne zadania</a>
-                    </li>			
-	 
-                    <li>
-                        <a  href="old_tasks.php" ><i "></i>Zamknięte zadania</a>
-                    </li>
-						<li>
-                        <a  href="suspended.php" ><i "></i>Zawieszone</a>
-                    </li>
-                   <?php 
+          </li>
+
+  <li><a href="main.php" class="w3-bar-item w3-button">Strona główna</a></li>
+  <li><a class="w3-bar-item w3-button" name='a' style="cursor:pointer">Zadania</a></li>
+  <div class="panela">
+  <div class="hover"><li><a href="tasks.php" class="w3-bar-item w3-button sidelist">Moje aktywne zadania</a></li></div>
+  <div class="hover"><li><a href="old_tasks.php" class="w3-bar-item w3-button sidelist">Zamknięte zadania</a></li></div>
+  <div class="hover"><li><a href="suspended.php" class="w3-bar-item w3-button sidelist">Zawieszone</a></li></div>
+<?php 
                    
-                   If ($_SESSION['function']=="2"){
-                      echo '<li>
-                        <a  href="add_tasks.php"><i "></i> Dodaj zadanie</a>
-                    </li>';  
-                      echo '<li> <a  href="add_subtasks.php"><i "></i> Dodaj podzadanie</a>
-                    </li>';
-                       echo '<li><a href="team_tasks.php"><i "></i> Zadania grupy</a>
-                    </li>';
-					 echo '<li><a href="managers.php"><i "></i> Zadania innych managerów</a>
-                    </li>';
+                   If ($_SESSION['function']=="2" ){
+                      echo '<div class="hover"><li><a href="team_tasks.php" class="w3-bar-item w3-button sidelist">Zadania grupy</a></li></div>';
+                      echo '<div class="hover"><li><a href="managers.php" class="w3-bar-item w3-button sidelist">Zadania innych menadżerów</a></li></div>';
                    }
                    ?>
-                   <li>
-                       <a  href="edit_profile.php" ><i "></i>Edytuj profil</a>
-                    </li>
-					
-					<li>
-                        <a  href="search.php" ><i "></i>Wyszukaj</a>
-                    </li>
-				
-                </ul>
+</div>
+
+<?php
+                If ($_SESSION['function']=="2" ){
+                echo' <li><a class="w3-bar-item w3-button" name="b" style="cursor: pointer">Dodaj</a></li>';
+       
+  }
+  ?>
+<div class="panelb">
+    <div class="hover"><li><a href="add_tasks.php" class="w3-bar-item w3-button sidelist">Dodaj zadanie</a><li></div>
+    <div class="hover"><li><a href="add_subtasks.php" class="w3-bar-item w3-button sidelist">Dodaj podzadanie</a><li></div>
+</div>
+
+  <li><a href="search.php" class="w3-bar-item w3-button">Wyszukaj</a></li>
                
             </div>
             

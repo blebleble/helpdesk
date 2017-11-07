@@ -75,7 +75,7 @@
                     $path=$row2['link'];
                     
                     
-                echo " <img src='$path' class='user-image img-responsive'/>";
+                  echo " <img src='$path' class='user-image img-responsive'/>";
       
                        ?>
           </li>
@@ -83,14 +83,14 @@
   <li><a href="main.php" class="w3-bar-item w3-button">Strona główna</a></li>
   <li><a class="w3-bar-item w3-button" name='a' style="cursor:pointer">Zadania</a></li>
   <div class="panela">
-  <li><a href="tasks.php" class="w3-bar-item w3-button">Moje aktywne zadania</a></li>
-  <li><a href="old_tasks.php" class="w3-bar-item w3-button">Zamknięte zadania</a></li>
-  <li><a href="suspended.php" class="w3-bar-item w3-button">Zawieszone</a></li>
+  <div class="hover"><li><a href="tasks.php" class="w3-bar-item w3-button sidelist">Moje aktywne zadania</a></li></div>
+  <div class="hover"><li><a href="old_tasks.php" class="w3-bar-item w3-button sidelist">Zamknięte zadania</a></li></div>
+  <div class="hover"><li><a href="suspended.php" class="w3-bar-item w3-button sidelist">Zawieszone</a></li></div>
 <?php 
                    
                    If ($_SESSION['function']=="2" ){
-                      echo '<li><a href="team_tasks.php" class="w3-bar-item w3-button">Zadania grupy</a></li>';
-                      echo '<li><a href="managers.php" class="w3-bar-item w3-button">Zadania innych menadżerów</a></li>';
+                      echo '<div class="hover"><li><a href="team_tasks.php" class="w3-bar-item w3-button sidelist">Zadania grupy</a></li></div>';
+                      echo '<div class="hover"><li><a href="managers.php" class="w3-bar-item w3-button sidelist">Zadania innych menadżerów</a></li></div>';
                    }
                    ?>
 </div>
@@ -102,15 +102,15 @@
   }
   ?>
 <div class="panelb">
-            <li><a href="add_tasks.php" class="w3-bar-item w3-button">Dodaj zadanie</a><li>
-            <li><a href="add_subtasks.php" class="w3-bar-item w3-button">Dodaj podzadanie</a><li>
+    <div class="hover"><li><a href="add_tasks.php" class="w3-bar-item w3-button sidelist">Dodaj zadanie</a><li></div>
+    <div class="hover"><li><a href="add_subtasks.php" class="w3-bar-item w3-button sidelist">Dodaj podzadanie</a><li></div>
 </div>
 
   <li><a href="search.php" class="w3-bar-item w3-button">Wyszukaj</a></li>
                
             </div>
             
-        </nav>
+        </nav>  
         <!-- /. NAV SIDE  -->
         <div id="page-wrapper" >
             <div id="page-inner">
