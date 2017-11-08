@@ -27,7 +27,8 @@
     <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
     
   <style>
-    #active2 {background-color: #e0610d};
+    #activesub5 {background-color: #e0610d;}
+    .panela {display: block;}
   </style>
 </head>
 <body>   

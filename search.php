@@ -40,7 +40,7 @@
     <link rel="Stylesheet" type="text/css" href="timeline/style.css" />
 
     <style>
-    #active4 {background-color: #e0610d}; 
+    #active2 {background-color: #e0610d}; 
     </style>
 </head>
 <body>

@@ -38,7 +38,8 @@
    <link rel="Stylesheet" type="text/css" href="timeline/style.css" />
    
     <style>
-        #active2 {background-color: #e0610d};
+        #activesub4 {background-color: #e0610d;}
+        .panela {display: block;}
     </style>
 </head>
 <body>

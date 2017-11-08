@@ -37,7 +37,8 @@
    <link rel="Stylesheet" type="text/css" href="timeline/style.css" />
 
     <style>
-    #active3 {background-color: #e0610d};
+    #activesub7 {background-color: #e0610d;}
+    .panelb {display: block;}
     </style>
 </head>
 <body>
