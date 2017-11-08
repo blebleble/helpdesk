@@ -35,6 +35,10 @@
      <!-- GOOGLE FONTS-->
    <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css' />
    <link rel="Stylesheet" type="text/css" href="timeline/style.css" />
+
+    <style>
+    #active3 {background-color: #e0610d};
+    </style>
 </head>
 <body>
     <div id="wrapper">

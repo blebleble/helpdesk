@@ -33,11 +33,15 @@
 	<!-- BOOTSTRAP STYLES-->
 	<link rel="stylesheet" href="table/css/style.css">
     <link href="template/assets/css/bootstrap.css" rel="stylesheet" />
-        <!-- CUSTOM STYLES-->
+    <!-- CUSTOM STYLES-->
     <link href="template/assets/css/custom.css" rel="stylesheet" />
-     <!-- GOOGLE FONTS-->
-   <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css' />
-   <link rel="Stylesheet" type="text/css" href="timeline/style.css" />
+    <!-- GOOGLE FONTS-->
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css' />
+    <link rel="Stylesheet" type="text/css" href="timeline/style.css" />
+
+    <style>
+    #active4 {background-color: #e0610d}; 
+    </style>
 </head>
 <body>
     <div id="wrapper">

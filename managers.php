@@ -26,6 +26,9 @@
    <link rel="Stylesheet" type="text/css" href="timeline/style.css" />
     <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
     
+  <style>
+    #active2 {background-color: #e0610d};
+  </style>
 </head>
 <body>   
     <div id="wrapper">

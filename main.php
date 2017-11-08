@@ -32,6 +32,9 @@
         <script src='calendar/fullcalendar.js'></script>
         <script src='calendar/locale/pl.js'></script>
    
+   <style>
+     #active1 {background-color: #e0610d};
+   </style>
         
       <script>
 	$(document).ready(function() {
