@@ -1,4 +1,4 @@
-<?php
+  <?php
 //strona główna - kalendarz z podzadaniami i (dla managera) z zadaniami
     session_start();
 
@@ -165,37 +165,9 @@ $(document).ready(function() {
       
                        ?>
 					</li>
-<<<<<<< HEAD
 
           <?php sidebar(); ?>
-=======
-				
-  <li><a href="main.php" class="w3-bar-item w3-button">Strona główna</a></li>
-  <li><a href='javascript:;'class="w3-bar-item w3-button" name='a'>Zadania</a></li>
-  <div class="panela">
-  <li><a href="tasks.php" class="w3-bar-item w3-button" style="color: white">Moje aktywne zadania</a></li>
-  <li><a href="old_tasks.php" class="w3-bar-item w3-button" style="color: white">Zamknięte zadania</a></li>
-  <li><a href="suspended.php" class="w3-bar-item w3-button" style="color: white">Zawieszone</a></li>
-<?php 
-                   
-                   If ($_SESSION['function']=="2" ){
-                      echo '<li><a href="team_tasks.php" style="color: white"><i "></i> Zadania grupy</a></li>';
-                      echo '<li><a href="managers.php" style="color: white"><i "></i> Zadania innych menadżerów</a></li>';
-                   }
-                   ?>
-</div>
 
-  <?php
-                If ($_SESSION['function']=="2" ){
-                echo' <li><a href="javascript:;" class="w3-bar-item w3-button" name="b">Dodaj</a></li>
-            <div class="panelb">
-            <li><a href="add_tasks.php" class="w3-bar-item w3-button" style="color: white">Dodaj zadanie</a><li>
-            <li><a href="add_subtasks.php" class="w3-bar-item w3-button" style="color: white">Dodaj podzadanie</a><li>
-            </div>';
-            
-  }
-  ?>
->>>>>>> 1288c14b1dc050c1b06cc65381636f89868af377
 
         </nav>  
         <!-- /. NAV SIDE  -->

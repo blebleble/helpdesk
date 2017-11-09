@@ -35,6 +35,11 @@
      <!-- GOOGLE FONTS-->
    <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css' />
    <link rel="Stylesheet" type="text/css" href="timeline/style.css" />
+
+   <style>
+    #activesub8 {background-color: #e0610d;}
+    .panelb {display: block;}
+  </style>
 </head>
 <body>
     <div id="wrapper">
@@ -142,4 +147,12 @@
 </html>
 
 <script type="text/javascript" src="js/notifications.js"></script>
- <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+<script>
+
+
+$( ".w3-button" ).click(function() {
+  var element= this.name;
+  $( ".panel"+element ).toggle();
+});
+</script>
