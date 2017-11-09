@@ -357,7 +357,7 @@ color: #8d8888;
 }
 
 /*==============================================
-    MENU STYLES    
+    MENU STYLES 
     =============================================*/
 
 
@@ -417,7 +417,6 @@ font-weight: 700;
 	color:#fff;
 	background:#202020;
 	text-shadow:none;
-	
 }
 .sidebar-collapse > .nav > li > a {
 	padding:15px 10px;
@@ -471,18 +470,13 @@ font-weight: 700;
 .navbar-cls-top {
 	background:#4D4D4D;
 	border-bottom:none;
-	
 }
 .navbar-cls-top .navbar-brand:hover {
-
 background: #e0610d;
 color:#fff;
-
 }
-
 .navbar-default {
-border:0px solid black;
-     
+border:0px solid black;    
 }
 .navbar-header {
     background: #A70303;
@@ -493,33 +487,24 @@ background-color: #B40101;
 .navbar-default .navbar-toggle {
 border-color: #fff;
 }
-
 .navbar-default .navbar-toggle .icon-bar {
 background-color: #FFF;
 }
 .nav > li > a > i {
     margin-right:10px;
 }
-
 .color {
   margin-right: 5px;
-
 }
-
-
-
 /*==============================================
     MEDIA QUERIES     
     =============================================*/
- 
  @media(min-width:768px) {
-     #page-wrapper{
-               margin: 0 0 0 260px;
-        padding: 15px 30px;
-        min-height: 1200px;
-		
+    #page-wrapper{
+    margin: 0 0 0 260px;
+    padding: 15px 30px;
+    min-height: 1200px;
     }
-	
 	
     .navbar-side {
         z-index: 1;
@@ -527,12 +512,10 @@ background-color: #FFF;
         width: 260px;
     }
 
-   .navbar {
- border-radius: 0px; 
+    .navbar {
+        border-radius: 0px; 
+    }
 }
-
-}
-
 /*=================NAVBAR================*/
 ul {
      list-style: none;
@@ -594,34 +577,34 @@ div.panel {
 }
 
 li > .w3-button {
-  color: white;
+    color: white;
 }
 
 li  > .w3-bar-item:hover {
-  color: white;
-  text-decoration: none;
-  width: 260px;
+    color: white;
+    text-decoration: none;
+    width: 260px;
 }
 
 .panela{
-  display: none;
-  line-height: 35px;
+    display: none;
+    line-height: 35px;
 }
 
 .panelb{
-  display: none;
-  line-height: 35px;
+    display: none;
+    line-height: 35px;
 }
 
 .sidelist{
-margin-left: 20%;
+    margin-left: 20%;
 }
 
 .hover{
-  width: 260px;
+    width: 260px;
 }
 
 .hover:hover{
-background-color: black;
-width: 100%;
+    background-color: black;
+    width: 100%;
 }
